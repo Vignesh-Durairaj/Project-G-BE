@@ -21,11 +21,8 @@ jobs:
          - run: mvn package
          - store_test_results: 
             path: target/surefire-reports
-         - codecov/upload:
-            file: target/my-reports/jacoco.xml
-            token: 96c6d7c1-7f08-4916-8bf4-7790425fb04c
          - store_artifacts: 
-            path: target/Project-G-BE-0.0.1-SNAPSHOT.jar
+            path: target/Project-G-0.0.1-SNAPSHOT.jar
             destination: project-G-artifacts
 
 workflows:
