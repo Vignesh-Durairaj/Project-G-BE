@@ -1,8 +1,12 @@
 package com.epam.hack.model;
 
+import static com.epam.hack.model.enums.TransactionType.CR;
+import static com.epam.hack.model.enums.TransactionType.DR;
+
 import java.time.LocalDate;
 import java.util.List;
 
+import com.epam.hack.model.enums.TransactionType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -47,7 +51,7 @@ public class Transaction {
 	
 	@JsonProperty("unofficial_currency_code")
 	private String otherCurrencyCode;
-
+	
 	public String getAccountId() {
 		return accountId;
 	}
@@ -142,6 +146,10 @@ public class Transaction {
 
 	public void setOtherCurrencyCode(String otherCurrencyCode) {
 		this.otherCurrencyCode = otherCurrencyCode;
+	}
+
+	public TransactionType getTransactionType() {
+		return amount > 0 ? DR : CR;
 	}
 	
 }
