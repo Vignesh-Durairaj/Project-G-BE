@@ -16,11 +16,6 @@ public class ProjectGApplication {
 		SpringApplication.run(ProjectGApplication.class, args);
 	}
 	
-	@RequestMapping("/hello")
-	public String sayHello(@RequestParam(name = "fn") String firstName, @RequestParam(name = "ln", required = false) String lastName) {
-		return String.format("hello %s%s !", lastName != null ? (lastName + ", ") : "", firstName);
-	}
-	
 	@RequestMapping("/transaction/history")
 	public String getTransactionDetails() {
 		return JsonUtils.readJsonFromFile();
