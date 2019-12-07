@@ -1,0 +1,32 @@
+version: 2.1
+orbs:
+   codecov: codecov/codecov@1.0.4
+jobs:
+   build:
+      working_directory: ~/Project-G-BE
+      docker:
+         - image: circleci/openjdk:11-ea-11-jdk-browsers
+      steps:
+         - checkout
+         - run:
+            name: SonarCloud analysis
+            command: mvn verify sonar:sonar
+         - restore_cache:
+            key: Project-G-{{ checksum "pom.xml" }}
+         - run: mvn dependency:go-offline
+         - save_cache: 
+            paths:
+               - ~/.m2
+            key: Project-G-{{ checksum "pom.xml" }}
+         - run: mvn clean package
+         - store_test_results: 
+            path: target/surefire-reports
+         - store_artifacts: 
+            path: target/Project-G-0.0.1-SNAPSHOT.jar
+            destination: project-G-artifacts
+
+workflows:
+  sonar-cloud:
+    jobs:
+      - build:
+          context: SonarCloud
