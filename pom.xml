@@ -17,7 +17,7 @@
 	<properties>
 		<java.version>11</java.version>
 		
-		<sonar.projectKey>Vignesh-Durairaj_Project-G</sonar.projectKey>
+		<sonar.projectKey>Vignesh-Durairaj_Project-G-BE</sonar.projectKey>
 		<sonar.organization>vignesh-durairaj</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
