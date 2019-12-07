@@ -5,9 +5,7 @@ import java.io.IOException;
 
 import com.epam.hack.model.ErrorResponse;
 import com.epam.hack.model.TransactionHistory;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonUtils {
@@ -15,9 +13,16 @@ public class JsonUtils {
 	private JsonUtils() {}
 	private static ObjectMapper mapper = new ObjectMapper();
 	
-	public static String readJsonFromFile() throws JsonParseException, JsonMappingException, IOException{
-		TransactionHistory history = mapper.readValue(new File("C:\\Users\\Vignesh\\Desktop\\FinTech Hackathon 2019\\transactionData.json"), TransactionHistory.class);
-		return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(history);
+	public static String readJsonFromFile() {
+		TransactionHistory history;
+		try {
+			history = mapper.readValue(new File("C:\\Users\\Vignesh\\Desktop\\FinTech Hackathon 2019\\transactionData.json"), TransactionHistory.class);
+			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(history);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return JsonUtils.returnErrorResponse(e.getMessage());
+		}
+		
 	}
 	
 	public static String returnErrorResponse(String message) {

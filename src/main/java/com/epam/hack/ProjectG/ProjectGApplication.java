@@ -1,7 +1,5 @@
 package com.epam.hack.ProjectG;
 
-import java.io.IOException;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,12 +23,7 @@ public class ProjectGApplication {
 	
 	@RequestMapping("/transaction/history")
 	public String getTransactionDetails() {
-		try {
-			return JsonUtils.readJsonFromFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return JsonUtils.returnErrorResponse(e.getMessage());
-		}
+		return JsonUtils.readJsonFromFile();
 	}
 
 }
