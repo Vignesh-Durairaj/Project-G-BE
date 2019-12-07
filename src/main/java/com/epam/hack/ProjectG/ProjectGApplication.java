@@ -2,12 +2,21 @@ package com.epam.hack.ProjectG;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
+@RestController
 public class ProjectGApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectGApplication.class, args);
+	}
+	
+	@RequestMapping("/hello")
+	public String sayHello(@RequestParam(name = "fn") String firstName, @RequestParam(name = "ln", required = false) String lastName) {
+		return String.format("hello %s%s !", lastName != null ? (lastName + ", ") : "", firstName);
 	}
 
 }
