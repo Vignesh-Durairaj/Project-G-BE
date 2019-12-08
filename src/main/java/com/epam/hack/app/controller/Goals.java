@@ -56,7 +56,7 @@ public class Goals {
 	public String getAllGoals() {
 		try {
 			return jsonHelper.getJsonFromFile(getFileFromClassPath("GoalAsResponse.json"));
-		} catch (IOException e) {
+		} catch (Exception e) {
 			LOGGER.error("Exception while getting predefined goals", e);
 			return jsonHelper.getErrorRespose(e.getMessage());
 		}
