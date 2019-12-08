@@ -26,6 +26,9 @@ public class GoalGenerator implements BaseInterface {
 			case EIGHTEEN_TO_TWENTY:
 				goals.addAll(getGoalsAtEarlyStage(user));
 				break;
+			case TWENTY_TO_TWENTY_FIVE:
+				goals.addAll(getGoalsAtEarlyStage(user));
+				break;
 			case TWENTY_FIVE_TO_THIRTY:
 				goals.addAll(getGoalAtEarlyMiddleAge(user));
 				break;
