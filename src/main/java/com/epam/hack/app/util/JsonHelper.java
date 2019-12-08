@@ -3,7 +3,9 @@ package com.epam.hack.app.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Component;
 
@@ -56,6 +58,15 @@ public class JsonHelper {
 		}
 	}
 	
+	public <T extends Object> List<T> unMarshallListFromFile(File jsonFile, Class<T> clazz) throws IOException{
+		try {
+			return mapper.readValue(jsonFile, new TypeReference<List<T>>() {});
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
 	public <T extends Object> List<T> unMarshallList(String json, Class<T> clazz) throws JsonProcessingException{
 		try {
 			return mapper.readValue(json, new TypeReference<List<T>>() {});
@@ -73,6 +84,19 @@ public class JsonHelper {
 			e.printStackTrace();
 			return "{\"message\": \"Comething is really really wrong\"}";
 		}
+	}
+	
+	public String getJsonFromFile(File file) throws IOException{
+		StringBuilder builder = new StringBuilder();
+		
+		try (Stream<String> stream = Files.lines(file.toPath())) {
+			stream
+				.forEach(line -> builder.append(line));
+		} catch (IOException e) {
+			throw e;
+		}
+		
+		return builder.toString();
 	}
 }
 

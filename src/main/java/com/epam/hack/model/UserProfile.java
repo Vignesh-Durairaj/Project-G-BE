@@ -16,6 +16,8 @@ public class UserProfile {
 	private Health overallHealth;
 	private boolean isMarried;
 
+	public UserProfile() {}
+	
 	public UserProfile(Gender gender, AgeGroup ageGroup, boolean isMarried) {
 		super();
 		this.gender = gender;
@@ -64,6 +66,10 @@ public class UserProfile {
 	}
 
 	public boolean isMarried() {
+		return isMarried;
+	}
+	
+	public boolean getIsMarried() {
 		return isMarried;
 	}
 
