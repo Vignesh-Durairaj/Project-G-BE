@@ -15,9 +15,14 @@ public class Transactions {
 	public static final String URL = "http://localhost:8080/transaction/history";
 	
 	public List<TransactionHistory> getTransactionHistories() {
-		RestTemplate template = new RestTemplate();
-		ResponseEntity<TransactionHistory[]> response = template.getForEntity(URL, TransactionHistory[].class);
-		return Arrays.asList(response.getBody());
+		try {
+			RestTemplate template = new RestTemplate();
+			ResponseEntity<TransactionHistory[]> response = template.getForEntity(URL, TransactionHistory[].class);
+			return Arrays.asList(response.getBody());
+		} catch (Throwable t) {
+			return Arrays.asList();
+		}
+		
 	}
 	
 }
