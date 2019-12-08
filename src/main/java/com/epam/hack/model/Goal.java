@@ -1,5 +1,7 @@
 package com.epam.hack.model;
 
+import static com.epam.hack.model.enums.Level.MID;
+
 import com.epam.hack.model.enums.Health;
 import com.epam.hack.model.enums.Level;
 
@@ -10,6 +12,16 @@ public class Goal {
 	private int targetMonth;
 	private Level priority;
 	private Health health;
+
+	public Goal(String name, int targetMonth) {
+		this(name, targetMonth, MID);
+	}
+	
+	public Goal(String name, int targetMonth, Level priority) {
+		this.name = name;
+		this.targetMonth = targetMonth;
+		this.priority = priority;
+	}
 
 	public String getName() {
 		return name;

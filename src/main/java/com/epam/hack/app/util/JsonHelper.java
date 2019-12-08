@@ -49,7 +49,7 @@ public class JsonHelper {
 	
 	public <T extends Object> String marshall(T t) {
 		try {
-			return mapper.writeValueAsString(t);
+			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(t);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 			return getErrorRespose(e.getMessage());
