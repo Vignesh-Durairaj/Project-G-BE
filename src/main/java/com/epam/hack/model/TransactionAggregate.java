@@ -1,7 +1,5 @@
 package com.epam.hack.model;
 
-import java.time.LocalDate;
-
 public class TransactionAggregate {
 
 	private Double expenses;
