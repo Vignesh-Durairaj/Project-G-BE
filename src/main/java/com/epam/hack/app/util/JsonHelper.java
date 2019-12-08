@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 public class JsonHelper {
 	
-	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	private JsonHelper() {}
 	private ObjectMapper mapper = new ObjectMapper();
@@ -30,7 +30,7 @@ public class JsonHelper {
 			TransactionHistory history = unMarshallFromFile(new File("C:\\Users\\Vignesh\\Desktop\\FinTech Hackathon 2019\\transactionData.json"), TransactionHistory.class);
 			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(history);
 		} catch (IOException e) {
-			LOGGER.error("Exception while reading JSON data from file", e);
+			logger.error("Exception while reading JSON data from file", e);
 			return getErrorRespose(e.getMessage());
 		}
 	}
@@ -39,7 +39,7 @@ public class JsonHelper {
 		try {
 			return mapper.readValue(jsonFile, clazz);
 		} catch (IOException e) {
-			LOGGER.error("Exception while unmarshalling JSON data from file", e);
+			logger.error("Exception while unmarshalling JSON data from file", e);
 			throw e;
 		}
 	}
@@ -48,7 +48,7 @@ public class JsonHelper {
 		try {
 			return mapper.readValue(json, clazz);
 		} catch (JsonProcessingException e) {
-			LOGGER.error("Exception while unmarshalling input data", e);
+			logger.error("Exception while unmarshalling input data", e);
 			throw e;
 		}
 	}
@@ -57,7 +57,7 @@ public class JsonHelper {
 		try {
 			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(t);
 		} catch (JsonProcessingException e) {
-			LOGGER.error("Exception while marshalling object", e);
+			logger.error("Exception while marshalling object", e);
 			return getErrorRespose(e.getMessage());
 		}
 	}
@@ -66,7 +66,7 @@ public class JsonHelper {
 		try {
 			return mapper.readValue(jsonFile, new TypeReference<List<T>>() {});
 		} catch (IOException e) {
-			LOGGER.error("Exception while unmarshalling list from file", e);
+			logger.error("Exception while unmarshalling list from file", e);
 			throw e;
 		}
 	}
@@ -75,7 +75,7 @@ public class JsonHelper {
 		try {
 			return mapper.readValue(json, new TypeReference<List<T>>() {});
 		} catch (JsonProcessingException e) {
-			LOGGER.error("Exception while unmarshall a list object", e);
+			logger.error("Exception while unmarshall a list object", e);
 			throw e;
 		}
 	}
@@ -85,18 +85,17 @@ public class JsonHelper {
 		try {
 			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(response);
 		} catch (JsonProcessingException e) {
-			LOGGER.error("Exception while getting a error response", e);
+			logger.error("Exception while getting a error response", e);
 			return "{\"message\": \"Comething is really really wrong\"}";
 		}
 	}
 	
-	public String getJsonFromFile(File file) throws IOException{
+	public String getJsonFromFile(File file) {
 		StringBuilder builder = new StringBuilder();
 		try (Stream<String> stream = Files.lines(file.toPath())) {
 			stream.forEach(builder::append);
 		} catch (IOException e) {
-			LOGGER.error("Exception while reading a JSON file", e);
-			throw e;
+			logger.error("Exception while reading a JSON file", e);
 		}
 		
 		return builder.toString();
