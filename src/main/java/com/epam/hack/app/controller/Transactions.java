@@ -12,7 +12,7 @@ import com.epam.hack.model.TransactionHistory;
 @RestController
 public class Transactions {
 
-	public final String URL = "http://localhost:8080/transaction/history";
+	public static final String URL = "http://localhost:8080/transaction/history";
 	
 	public List<TransactionHistory> getTransactionHistories() {
 		RestTemplate template = new RestTemplate();

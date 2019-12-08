@@ -36,13 +36,13 @@ public class GoalGenerator implements BaseInterface {
 				goals.addAll(getGoalAtMiddleAge(user));
 				break;
 			case FORTY_TO_FIFTY:
-				goals.addAll(getGoalAtLateMiddleAge(user));
+				goals.addAll(getGoalAtLateMiddleAge());
 				break;
 			case FIFTY_TO_SIXTY:
-				goals.addAll(getGoalAtEarlyRetirement(user));
+				goals.addAll(getGoalAtEarlyRetirement());
 				break;
 			case SIXTY_AND_ABOVE:
-				goals.addAll(getGoalAtAfterRetirement(user));
+				goals.addAll(getGoalAtAfterRetirement());
 				break;
 			default:
 				goals.add(new Goal("Plan a vacation overseas", 6));
@@ -91,20 +91,20 @@ public class GoalGenerator implements BaseInterface {
 		return goals;
 	}
 	
-	private List<Goal> getGoalAtLateMiddleAge(UserProfile user) {
+	private List<Goal> getGoalAtLateMiddleAge() {
 		List<Goal> goals = new ArrayList<>();
 		goals.add(new Goal("Plan to buy a new house", 24, HIGH));
 		return goals;
 	}
 	
-	private List<Goal> getGoalAtEarlyRetirement(UserProfile user) {
+	private List<Goal> getGoalAtEarlyRetirement() {
 		List<Goal> goals = new ArrayList<>();
 		goals.add(new Goal("Plan for a vacation", 12, LOW));
 		goals.add(new Goal("Plan for children's wedding gift", 6));
 		return goals;
 	}
 	
-	private List<Goal> getGoalAtAfterRetirement(UserProfile user) {
+	private List<Goal> getGoalAtAfterRetirement() {
 		List<Goal> goals = new ArrayList<>();
 		goals.add(new Goal("Save for the next holiday of grand children", 6));
 		return goals;
