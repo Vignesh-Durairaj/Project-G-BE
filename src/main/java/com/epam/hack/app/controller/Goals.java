@@ -35,7 +35,8 @@ public class Goals {
 	public String getGoalsForUser(@RequestBody UserProfile userProfile) {
 		
 		List<TransactionHistory> transactionHistories = transactionController.getTransactionHistories();
-		LOGGER.info(transactionHistories != null ? transactionHistories.toString() : "");
+		String transHistory = transactionHistories != null ? transactionHistories.toString() : "";
+		LOGGER.info(transHistory);
 		return jsonHelper.marshall(goalGeneratorService.getAutomatedGoalWithNoTransactions(userProfile));
 	}
 	

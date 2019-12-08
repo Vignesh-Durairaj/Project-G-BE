@@ -3,6 +3,7 @@ package com.epam.hack.app.service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,7 @@ public class ExpenseAggregateService {
 				.collect(Collectors.groupingBy(DateExpensePair::getDate));
 		
 		return expensesByMonth.entrySet().stream()
-				.collect(Collectors.toMap(entry -> entry.getKey(), entry -> getAggregateForMonth(entry.getValue())));
+				.collect(Collectors.toMap(Entry::getKey, entry -> getAggregateForMonth(entry.getValue())));
 	}
 	
 	private List<Transaction> consolidateTransactions (List<TransactionHistory> allTransactionHistory) {

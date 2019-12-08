@@ -37,7 +37,7 @@ public class JsonHelper {
 	
 	public <T extends Object> T unMarshallFromFile(File jsonFile, Class<T> clazz) throws IOException {
 		try {
-			return (T) mapper.readValue(jsonFile, clazz);
+			return mapper.readValue(jsonFile, clazz);
 		} catch (IOException e) {
 			LOGGER.error("Exception while unmarshalling JSON data from file", e);
 			throw e;
@@ -46,7 +46,7 @@ public class JsonHelper {
 	
 	public <T extends Object> T unMarshall(String json, Class<T> clazz) throws JsonProcessingException{
 		try {
-			return (T) mapper.readValue(json, clazz);
+			return mapper.readValue(json, clazz);
 		} catch (JsonProcessingException e) {
 			LOGGER.error("Exception while unmarshalling input data", e);
 			throw e;
@@ -62,7 +62,7 @@ public class JsonHelper {
 		}
 	}
 	
-	public <T extends Object> List<T> unMarshallListFromFile(File jsonFile, Class<T> clazz) throws IOException{
+	public <T extends Object> List<T> unMarshallListFromFile(File jsonFile) throws IOException{
 		try {
 			return mapper.readValue(jsonFile, new TypeReference<List<T>>() {});
 		} catch (IOException e) {
@@ -71,7 +71,7 @@ public class JsonHelper {
 		}
 	}
 	
-	public <T extends Object> List<T> unMarshallList(String json, Class<T> clazz) throws JsonProcessingException{
+	public <T extends Object> List<T> unMarshallList(String json) throws JsonProcessingException{
 		try {
 			return mapper.readValue(json, new TypeReference<List<T>>() {});
 		} catch (JsonProcessingException e) {
@@ -93,8 +93,9 @@ public class JsonHelper {
 	public String getJsonFromFile(File file) throws IOException{
 		StringBuilder builder = new StringBuilder();
 		try (Stream<String> stream = Files.lines(file.toPath())) {
-			stream.forEach(line -> builder.append(line));
+			stream.forEach(builder::append);
 		} catch (IOException e) {
+			LOGGER.error("Exception while reading a JSON file", e);
 			throw e;
 		}
 		
