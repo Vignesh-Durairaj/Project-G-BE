@@ -25,6 +25,7 @@ public enum AgeGroup {
 	public static AgeGroup getAgeGroupFromDesc(String desc) {
 		return Arrays.stream(values())
 			.filter(group -> group.getDescription().equalsIgnoreCase(desc))
+			.peek(g -> g.getDescription())
 			.findFirst()
 			.orElseThrow();
 	}

@@ -1,0 +1,37 @@
+[ {
+  "name" : "Plan for Marriage",
+  "amount" : 5000.0,
+  "targetMonth" : 6,
+  "priority" : "HIGH",
+  "health" : "AMBER"
+}, {
+  "name" : "Plan for a vacation",
+  "amount" : 3000.0,
+  "targetMonth" : 12,
+  "priority" : "LOW",
+  "health" : "GREEN"
+}, {
+  "name" : "Plan for new house furnitures",
+  "amount" : 10000.0,
+  "targetMonth" : 12,
+  "priority" : "MID",
+  "health" : "GREEN"
+}, {
+  "name" : "Startup ideas",
+  "amount" : 100000.0,
+  "targetMonth" : 60,
+  "priority" : "NO",
+  "health" : "GREEN"
+}, {
+  "name" : "Save money to own an apartment",
+  "amount" : 150000.0,
+  "targetMonth" : 60,
+  "priority" : "LOW",
+  "health" : "GREEN"
+}, {
+  "name" : "Retire at the carribbean",
+  "amount" : 10000000.0,
+  "targetMonth" : 120,
+  "priority" : "NO",
+  "health" : "AMBER"
+} ]

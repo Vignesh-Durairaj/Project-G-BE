@@ -14,6 +14,16 @@ public class UserProfile {
 	private Level incomeLevel;
 	private List<Goal> needs;
 	private Health overallHealth;
+	private boolean isMarried;
+
+	public UserProfile() {}
+	
+	public UserProfile(Gender gender, AgeGroup ageGroup, boolean isMarried) {
+		super();
+		this.gender = gender;
+		this.ageGroup = ageGroup;
+		this.isMarried = isMarried;
+	}
 
 	public Gender getGender() {
 		return gender;
@@ -54,5 +64,16 @@ public class UserProfile {
 	public void setOverallHealth(Health overallHealth) {
 		this.overallHealth = overallHealth;
 	}
+
+	public boolean isMarried() {
+		return isMarried;
+	}
 	
+	public boolean getIsMarried() {
+		return isMarried;
+	}
+
+	public void setMarried(boolean isMarried) {
+		this.isMarried = isMarried;
+	}
 }
